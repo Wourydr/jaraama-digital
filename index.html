@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaraama Digital — Création de sites web à Dakar</title>
+<meta name="description" content="Freelance à Dakar : création de sites vitrines, e-commerce et automatisations pour PME sénégalaises et clients internationaux. Paiement Wave / Orange Money accepté.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --vert:#0d7a4f;
+    --vert-fonce:#0a5c3c;
+    --vert-clair:#e6f4ee;
+    --jaune:#f4c414;
+    --noir:#101828;
+    --gris:#475467;
+    --gris-clair:#f4f6f8;
+    --blanc:#ffffff;
+    --rayon:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;color:var(--noir);background:var(--blanc);line-height:1.6}
+  h1,h2,h3{font-family:'Poppins',sans-serif;line-height:1.25}
+  img{max-width:100%;display:block}
+  .conteneur{max-width:1100px;margin:0 auto;padding:0 24px}
+  section{padding:72px 0}
+  .etiquette{display:inline-block;background:var(--vert-clair);color:var(--vert-fonce);font-weight:600;font-size:.85rem;padding:6px 14px;border-radius:999px;margin-bottom:16px;letter-spacing:.03em}
+  h2.titre-section{font-size:2rem;margin-bottom:12px}
+  .sous-titre{color:var(--gris);max-width:640px;margin-bottom:40px}
+
+  /* NAV */
+  header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid #eef0f3;z-index:50}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1100px;margin:0 auto}
+  .logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.15rem;color:var(--vert);text-decoration:none}
+  .logo span{color:var(--jaune)}
+  nav ul{display:flex;gap:28px;list-style:none}
+  nav a{color:var(--gris);text-decoration:none;font-weight:500;font-size:.95rem}
+  nav a:hover{color:var(--vert)}
+  .btn-nav{background:var(--vert);color:#fff !important;padding:10px 20px;border-radius:999px;font-weight:600}
+  .btn-nav:hover{background:var(--vert-fonce)}
+  .menu-burger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--noir)}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--vert-fonce) 0%,var(--vert) 60%,#12925f 100%);color:#fff;padding:96px 0 88px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:rgba(244,196,20,.15)}
+  .hero .conteneur{position:relative;z-index:1}
+  .hero h1{font-size:clamp(1.9rem,4.5vw,3.2rem);font-weight:800;max-width:760px;margin-bottom:20px}
+  .hero h1 em{font-style:normal;color:var(--jaune)}
+  .hero p{font-size:1.1rem;max-width:620px;color:#e7f5ee;margin-bottom:32px}
+  .boutons{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:14px 28px;border-radius:999px;font-weight:600;text-decoration:none;font-size:1rem;transition:.2s}
+  .btn-primaire{background:var(--jaune);color:var(--noir)}
+  .btn-primaire:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+  .btn-secondaire{border:2px solid rgba(255,255,255,.6);color:#fff}
+  .btn-secondaire:hover{background:rgba(255,255,255,.12)}
+  .badges{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+  .badge{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:999px;font-size:.85rem}
+
+  /* A PROPOS */
+  .apropos{background:var(--gris-clair)}
+  .apropos-grille{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:start}
+  .apropos p{color:var(--gris);margin-bottom:16px}
+  .atouts{display:grid;gap:14px}
+  .atout{background:#fff;border:1px solid #e8ecef;border-radius:var(--rayon);padding:18px 20px;display:flex;gap:14px;align-items:flex-start}
+  .atout .icone{font-size:1.4rem}
+  .atout strong{display:block;font-size:.98rem}
+  .atout span{color:var(--gris);font-size:.9rem}
+
+  /* SERVICES */
+  .cartes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+  .carte{border:1px solid #e8ecef;border-radius:var(--rayon);padding:28px;background:#fff;transition:.2s;display:flex;flex-direction:column}
+  .carte:hover{box-shadow:0 12px 30px rgba(16,24,40,.08);transform:translateY(-4px)}
+  .carte .icone{width:52px;height:52px;border-radius:12px;background:var(--vert-clair);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:18px}
+  .carte h3{font-size:1.15rem;margin-bottom:10px}
+  .carte p{color:var(--gris);font-size:.95rem;flex:1}
+  .carte ul{list-style:none;margin:16px 0;display:grid;gap:8px}
+  .carte li{font-size:.9rem;color:var(--gris);padding-left:24px;position:relative}
+  .carte li::before{content:"✓";position:absolute;left:0;color:var(--vert);font-weight:700}
+  .prix{font-family:'Poppins',sans-serif;font-weight:700;font-size:1.25rem;color:var(--vert);margin-top:8px}
+  .prix small{font-weight:500;color:var(--gris);font-size:.8rem;display:block}
+
+  /* PROCESS */
+  #process{background:var(--gris-clair)}
+  .etapes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;counter-reset:etape}
+  .etape{position:relative;padding:24px;border-radius:var(--rayon);background:#fff;border:1px solid #e8ecef}
+  .etape::before{counter-increment:etape;content:"0" counter(etape);font-family:'Poppins',sans-serif;font-weight:800;font-size:1.6rem;color:var(--jaune);display:block;margin-bottom:10px}
+  .etape h3{font-size:1.02rem;margin-bottom:8px}
+  .etape p{color:var(--gris);font-size:.9rem}
+
+  /* CONTACT */
+  .contact{background:linear-gradient(135deg,var(--vert-fonce),var(--vert));color:#fff;text-align:center}
+  .contact h2{font-size:2rem;margin-bottom:12px}
+  .contact p{color:#e7f5ee;max-width:560px;margin:0 auto 32px}
+  .contact-cartes{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+  .contact-carte{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:var(--rayon);padding:24px 32px;text-decoration:none;color:#fff;min-width:240px;transition:.2s}
+  .contact-carte:hover{background:rgba(255,255,255,.18);transform:translateY(-3px)}
+  .contact-carte .icone{font-size:1.8rem;margin-bottom:8px}
+  .contact-carte strong{display:block;font-size:1rem}
+  .contact-carte span{font-size:.88rem;color:#d5eae0;word-break:break-all}
+
+  footer{background:#0b241b;color:#9fb8ac;padding:28px 0;font-size:.88rem;text-align:center}
+
+  /* RESPONSIVE */
+  @media(max-width:800px){
+    nav ul{display:none}
+    .menu-burger{display:block}
+    nav ul.ouvert{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:#fff;padding:24px;gap:16px;border-bottom:1px solid #eef0f3;box-shadow:0 10px 24px rgba(0,0,0,.08)}
+    .apropos-grille{grid-template-columns:1fr}
+    section{padding:56px 0}
+  }
+
+  /* PRINT / PDF */
+  @media print{
+    *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+    @page{size:A4;margin:0}
+    header{position:static}
+    .nav{padding:12px 24px}
+    nav ul{display:flex !important;gap:18px}
+    .menu-burger{display:none !important}
+    section{padding:36px 0}
+    .etiquette{margin-bottom:10px}
+    h2.titre-section{font-size:1.75rem;margin-bottom:10px}
+    .sous-titre{margin-bottom:24px}
+    .hero{padding:30px 0 28px}
+    .hero h1{font-size:1.95rem;margin-bottom:12px}
+    .hero p{font-size:.95rem;margin-bottom:18px}
+    .btn{padding:10px 20px;font-size:.9rem}
+    .badges{margin-top:18px;gap:8px}
+    .badge{padding:5px 12px;font-size:.78rem}
+    .apropos{padding:28px 0}
+    .apropos p{font-size:.9rem;margin-bottom:10px;line-height:1.5}
+    .apropos-grille{grid-template-columns:1.15fr .85fr !important;gap:24px}
+    .atouts{gap:10px}
+    .atout{padding:11px 14px;break-inside:avoid}
+    .atout strong{font-size:.9rem}
+    .atout span{font-size:.82rem}
+    #services{break-before:page;page-break-before:always}
+    .cartes{grid-template-columns:repeat(2,1fr) !important;gap:18px}
+    .carte{padding:20px;break-inside:avoid}
+    .carte .icone{width:42px;height:42px;font-size:1.25rem;margin-bottom:12px}
+    .carte p,.carte li{font-size:.88rem}
+    .carte ul{margin:12px 0;gap:6px}
+    .prix{font-size:1.12rem}
+    #process{break-before:page;page-break-before:always}
+    .etapes{grid-template-columns:repeat(2,1fr) !important;gap:16px}
+    .etape{padding:18px;break-inside:avoid}
+    .etape::before{font-size:1.35rem;margin-bottom:6px}
+    .contact{padding:38px 0}
+    .contact p{margin:0 auto 24px}
+    .contact-carte{padding:18px 28px;break-inside:avoid}
+    footer{padding:20px 0;break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<header>
+  <div class="nav">
+    <a class="logo" href="#accueil">Jaraama <span>Digital</span></a>
+    <nav>
+      <ul id="menu">
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#services">Services & Tarifs</a></li>
+        <li><a href="#process">Processus</a></li>
+        <li><a class="btn-nav" href="#contact">Me contacter</a></li>
+      </ul>
+    </nav>
+    <button class="menu-burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<div class="hero" id="accueil">
+  <div class="conteneur">
+    <h1>Je crée des <em>sites web rapides</em> et des <em>automatisations</em> qui font grandir votre activité</h1>
+    <p>Développeur web & spécialiste no-code basé à Dakar. Sites vitrines, boutiques en ligne et outils sur mesure pour les PME sénégalaises et les clients internationaux — livrés en 7 jours, avec paiement Wave et Orange Money.</p>
+    <div class="boutons">
+      <a class="btn btn-primaire" href="#contact">💬 Discuter sur WhatsApp</a>
+      <a class="btn btn-secondaire" href="#services">Voir mes services</a>
+    </div>
+    <div class="badges">
+      <span class="badge">⚡ Livraison en 7 jours</span>
+      <span class="badge">📱 100% responsive mobile</span>
+      <span class="badge">💳 Wave · Orange Money · Virement</span>
+      <span class="badge">🇸🇳 Dakar · 🌍 Clients à l'international</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== A PROPOS ===== -->
+<section class="apropos" id="apropos">
+  <div class="conteneur">
+    <span class="etiquette">À propos</span>
+    <h2 class="titre-section">Votre partenaire digital à Dakar</h2>
+    <div class="apropos-grille">
+      <div>
+        <p>Bonjour ! Moi, c'est <strong>Woury</strong>, fondatrice de <strong>Jaraama Digital</strong>. J'aide les entrepreneurs, commerçants et PME à avoir une présence en ligne professionnelle — sans jargon, sans délais interminables, et à un prix adapté au marché sénégalais.</p>
+        <p>Je travaille aussi bien avec les commerces de Dakar (restaurants, pharmacies, écoles, boutiques, agences) qu'avec des clients en Europe et aux États-Unis, notamment la diaspora qui lance ses projets au Sénégal.</p>
+        <p>Ma promesse : un site livré vite, qui charge vite, et qui transforme vos visiteurs en clients.</p>
+      </div>
+      <div class="atouts">
+        <div class="atout"><span class="icone">🛠️</span><div><strong>Compétences techniques</strong><span>HTML/CSS, JavaScript, WordPress, no-code (Webflow, Bubble), automatisations</span></div></div>
+        <div class="atout"><span class="icone">📍</span><div><strong>Expertise locale</strong><span>Intégration Wave & Orange Money, référencement Google Maps, contenus en français</span></div></div>
+        <div class="atout"><span class="icone">🤝</span><div><strong>Suivi humain</strong><span>Un seul interlocuteur, du devis à la maintenance après livraison</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section id="services">
+  <div class="conteneur">
+    <span class="etiquette">Services & Tarifs</span>
+    <h2 class="titre-section">Des offres claires, sans surprise</h2>
+    <p class="sous-titre">Prix indicatifs TTC en FCFA. Chaque projet fait l'objet d'un devis personnalisé gratuit.</p>
+    <div class="cartes">
+      <div class="carte">
+        <div class="icone">🖥️</div>
+        <h3>Site vitrine</h3>
+        <p>Pour être visible et crédible sur Google et WhatsApp.</p>
+        <ul>
+          <li>3 à 5 pages (accueil, services, galerie, contact)</li>
+          <li>Fiche Google Business optimisée</li>
+          <li>Boutons WhatsApp cliquables</li>
+          <li>Livré en 7 jours</li>
+        </ul>
+        <div class="prix">60 000 – 150 000 FCFA<small>à partir de ~90 €</small></div>
+      </div>
+      <div class="carte">
+        <div class="icone">🛒</div>
+        <h3>Site e-commerce / intermédiaire</h3>
+        <p>Vendez en ligne avec paiement mobile money intégré.</p>
+        <ul>
+          <li>Catalogue produits ou réservations</li>
+          <li>Paiement Wave / Orange Money / livraison</li>
+          <li>Tableau de bord simple</li>
+          <li>Formation à la prise en main</li>
+        </ul>
+        <div class="prix">150 000 – 500 000 FCFA<small>à partir de ~230 €</small></div>
+      </div>
+      <div class="carte">
+        <div class="icone">⚙️</div>
+        <h3>Automatisation & sur-mesure</h3>
+        <p>Gagnez des heures sur vos tâches répétitives.</p>
+        <ul>
+          <li>Automatisations no-code (devis, factures, relances)</li>
+          <li>Connexion de vos outils (Sheets, WhatsApp, email)</li>
+          <li>Tableaux de bord de suivi</li>
+          <li>Projets internationaux en EUR/USD</li>
+        </ul>
+        <div class="prix">Sur devis<small>1 000 000+ FCFA pour projets complets</small></div>
+      </div>
+      <div class="carte">
+        <div class="icone">🔧</div>
+        <h3>Maintenance mensuelle</h3>
+        <p>Votre site reste à jour, sécurisé et rapide.</p>
+        <ul>
+          <li>Mises à jour et sauvegardes</li>
+          <li>Modifications de contenu illimitées</li>
+          <li>Assistance WhatsApp prioritaire</li>
+        </ul>
+        <div class="prix">15 000 – 50 000 FCFA / mois<small>selon la taille du site</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESSUS ===== -->
+<section id="process">
+  <div class="conteneur">
+    <span class="etiquette">Processus</span>
+    <h2 class="titre-section">Comment on travaille ensemble</h2>
+    <p class="sous-titre">Un parcours simple en 4 étapes, du premier message à la mise en ligne.</p>
+    <div class="etapes">
+      <div class="etape"><h3>Échange & devis gratuit</h3><p>Vous m'écrivez sur WhatsApp. On discute de votre besoin et je vous envoie un devis clair sous 24 h.</p></div>
+      <div class="etape"><h3>Acompte & démarrage</h3><p>Vous validez avec un acompte (Wave, Orange Money ou virement). Je commence la création immédiatement.</p></div>
+      <div class="etape"><h3>Création & ajustements</h3><p>Vous suivez l'avancement et me donnez vos retours. J'ajuste jusqu'à ce que le site vous ressemble.</p></div>
+      <div class="etape"><h3>Livraison & mise en ligne</h3><p>Votre site est publié sur votre nom de domaine, avec une courte formation pour être autonome.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="contact" id="contact">
+  <div class="conteneur">
+    <h2>Parlons de votre projet 🚀</h2>
+    <p>Première consultation gratuite et sans engagement. Réponse sous quelques heures en journée.</p>
+    <div class="contact-cartes">
+      <a class="contact-carte" href="https://wa.me/221783783983?text=Bonjour%20Jaraama%20Digital%2C%20je%20souhaite%20discuter%20d'un%20projet%20de%20site%20web." target="_blank" rel="noopener">
+        <div class="icone">💬</div>
+        <strong>WhatsApp</strong>
+        <span>+221 78 378 39 83</span>
+      </a>
+      <a class="contact-carte" href="mailto:woury10@yahoo.com">
+        <div class="icone">✉️</div>
+        <strong>Email</strong>
+        <span>woury10@yahoo.com</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="conteneur">© 2026 Jaraama Digital — Création de sites web, Dakar, Sénégal · WhatsApp : +221 78 378 39 83 · NINEA en cours d'immatriculation</div>
+</footer>
+
+<script>
+  // Menu mobile
+  var burger=document.getElementById('burger');
+  var menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){menu.classList.toggle('ouvert');});
+  // Fermer le menu au clic sur un lien
+  menu.querySelectorAll('a').forEach(function(lien){
+    lien.addEventListener('click',function(){menu.classList.remove('ouvert');});
+  });
+</script>
+</body>
+</html>
